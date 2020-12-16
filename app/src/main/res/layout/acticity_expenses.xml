@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ExpensesActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBarExpenses"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_sharing_users"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_cardView"
         android:layout_width="match_parent"
@@ -25,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
-                android:text="Title"
+                android:text="Наименование"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,13 +46,26 @@
                 android:id="@+id/tv_expense_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cost"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Стоимость"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_expense_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_expense_name"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tv_expense_buyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Покупатель"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_expense_name"
-                app:layout_constraintTop_toBottomOf="@+id/tv_expense_name"
+                app:layout_constraintStart_toStartOf="@+id/tv_expense_cost"
+                app:layout_constraintTop_toBottomOf="@+id/tv_expense_cost"
                 tools:layout_editor_absoluteY="69dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -72,6 +96,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
         android:focusable="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_delete_user_from_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onRemoveSharingClick"
+        android:tint="#FFFFFF"
+        app:backgroundTint="#FFEB3B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_delete_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onDeleteShareClick"
+        android:tint="#FFFFFF"
+        app:backgroundTint="#FFEB3B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_delete_user_from_share"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_edit_price"
